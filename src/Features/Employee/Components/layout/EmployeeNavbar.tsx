@@ -15,7 +15,7 @@ const EmployeeNavbar = () => {
         {/* Step 1 */}
         <div className="flex flex-col items-center flex-1">
           <NavLink
-            to="/"
+            to="/basic-information"
             className={({ isActive }) =>
               `w-8 h-8 rounded-full border-2 flex items-center justify-center font-semibold transition-all duration-200 ${
                 isActive

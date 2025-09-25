@@ -1,11 +1,7 @@
+import { useParams, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAppDispatch, useAppSelector } from "@/Redux/hooks";
-import { useNavigate } from "react-router";
-import { savePersonalInfo } from "../featuresSlices/employeeSlice";
-import { useCreateEmployeeMutation } from "@/Redux/baseApi";
-
 import {
   Form,
   FormField,
@@ -15,16 +11,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { useGetEmployeeByIdQuery, useUpdateEmployeeMutation } from "@/Redux/baseApi";
 import { toast } from "sonner";
 
-// ✅ Zod validation schema
+// ✅ Reuse schema
 const formSchema = z.object({
   fatherName: z.string().min(1, "Father's name is required"),
   motherName: z.string().min(1, "Mother's name is required"),
@@ -39,94 +31,37 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const PersonalInfo = () => {
-  const dispatch = useAppDispatch();
+const EditPersonalInfo = () => {
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  // get prev page and this page data
-  const personalInfo = useAppSelector((state) => state.employee.personalInfo);
-  const basicInfo = useAppSelector((state) => state.employee.basicInfo);
-
-  // post data 
-  const [createEmployee, { isLoading }] = useCreateEmployeeMutation();
+  const { data, isLoading } = useGetEmployeeByIdQuery(id!);
+  const [updateEmployee, { isLoading: isUpdating }] = useUpdateEmployeeMutation();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      fatherName: personalInfo?.fatherName || "",
-      motherName: personalInfo?.motherName || "",
-      dateOfBirth: personalInfo?.dateOfBirth || "",
-      gender: personalInfo?.gender || "",
-      maritalStatus: personalInfo?.maritalStatus || "",
-      nationality: personalInfo?.nationality || "",
-      religion: personalInfo?.religion || "",
-      bloodGroup: personalInfo?.bloodGroup || "",
-      nationalIdOrPassport: personalInfo?.nationalIdOrPassport || "",
-    },
+    values: data?.data ?? {},
   });
 
-  const onSubmit = async (data: FormValues) => {
-    // Save personal info to Redux
-    dispatch(savePersonalInfo(data));
-
-    // ✅ Check if basicInfo exists and has required fields
-    if (
-      !basicInfo ||
-      !basicInfo.firstName ||
-      !basicInfo.email ||
-      !basicInfo.phone
-    ) {
-      console.error("❌ Basic info is missing required fields:", basicInfo);
-      alert("Please complete the basic information first!");
-      navigate("/"); 
-      return;
-    }
-
-    // ✅ Combine both parts with proper structure
-    const employeePayload = {
-      employee: basicInfo,
-      personalInfo: data,
-    };
-
+  const onSubmit = async (values: FormValues) => {
     try {
-      console.log("📤 Sending payload to backend:", employeePayload);
-      const result = await createEmployee(employeePayload).unwrap();
-
-      console.log("✅ Employee created successfully:", result);
-      toast("Employee created successfully!");
-      navigate("/"); 
-    } catch (err: any) {
-      console.error("❌ Failed to save employee:", err);
-
-      // show error
-      if (err.data?.error?.name === "ValidationError") {
-        toast(
-          "Validation error: Please check all required fields are filled correctly."
-        );
-      } else {
-        toast("Something went wrong while saving employee");
-      }
+      await updateEmployee({ id, data: { personalInfo: values } }).unwrap();
+      toast("✅ Employee updated successfully!");
+      navigate("/");
+    } catch (err) {
+      console.error("❌ Update failed:", err);
+      toast("❌ Failed to update employee");
     }
   };
 
+  if (isLoading) return <p>Loading...</p>;
+
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className=" p-8 w-full h-full mx-auto"
-      >
-        <h2 className="text-xl font-semibold">Personal Information</h2>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="p-8 w-full h-full mx-auto">
+        <h2 className="text-xl font-semibold">Edit Personal Information</h2>
 
-        {/* Debug info */}
-        {(!basicInfo || !basicInfo.firstName) && (
-          <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded">
-            ⚠️ Warning: Basic information appears to be missing. Please go back
-            and complete it first.
-          </div>
-        )}
-
-        <div className="border-2 border-gray-300 p-3 space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
             {/* Father's Name */}
             <FormField
               control={form.control}
@@ -299,30 +234,23 @@ const PersonalInfo = () => {
               )}
             />
           </div>
-        </div>
 
-        <div className="flex justify-end pt-4 gap-6">
-          {/* prev button */}
-          <button
+
+        <div className="flex justify-between pt-4">
+          <Button
             type="button"
+            variant="secondary"
             onClick={() => navigate(-1)}
-            className="px-4 py-2 rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200"
           >
             Previous
-          </button>
-
-          {/* submit button */}
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:bg-gray-400"
-          >
-            {isLoading ? "Submitting..." : "Submit"}
-          </button>
+          </Button>
+          <Button type="submit" disabled={isUpdating} className="px-10 bg-green-600 text-white">
+            {isUpdating ? "Updating..." : "Save Changes"}
+          </Button>
         </div>
       </form>
     </Form>
   );
 };
 
-export default PersonalInfo;
+export default EditPersonalInfo;

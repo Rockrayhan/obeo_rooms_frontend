@@ -1,4 +1,3 @@
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
@@ -6,10 +5,7 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }),
   tagTypes: ["employee"],
   endpoints: (builder) => ({
-
-
-
-    // POST book
+    // POST employee (create)
     createEmployee: builder.mutation({
       query: (data) => ({
         url: "/employee",
@@ -19,11 +15,46 @@ export const baseApi = createApi({
       invalidatesTags: ["employee"],
     }),
 
-    
-    
+    // GET all employees
+    getAllEmployees: builder.query({
+      query: () => "/employee",
+      providesTags: ["employee"],
+    }),
+
+    // GET employee by ID
+    getEmployeeById: builder.query({
+      query: (id: string) => `/employee/${id}`,
+      providesTags: ["employee"],
+    }),
+
+    // PATCH employee (update)
+    updateEmployee: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/employee/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["employee"],
+    }),
+
+    // DELETE employee
+    deleteEmployee: builder.mutation({
+      query: (id: string) => ({
+        url: `/employee/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["employee"], // refresh the employee list automatically
+    }),
+
+
+
   }),
 });
 
 export const {
-  useCreateEmployeeMutation
+  useCreateEmployeeMutation,
+  useGetAllEmployeesQuery,
+  useGetEmployeeByIdQuery,
+  useUpdateEmployeeMutation,
+  useDeleteEmployeeMutation,
 } = baseApi;
