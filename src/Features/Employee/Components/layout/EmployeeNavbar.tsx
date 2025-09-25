@@ -1,10 +1,6 @@
 import { NavLink } from "react-router";
 
-interface EmployeeNavbarProps {
-  basePath?: string; // default is "/"
-}
-
-const EmployeeNavbar = ({ basePath = "" }: EmployeeNavbarProps) => {
+const EmployeeNavbar = () => {
   return (
     <div className="flex flex-col items-start mb-8 border border-gray-300 p-3">
       <div className="flex items-center w-full max-w-md relative">
@@ -15,11 +11,11 @@ const EmployeeNavbar = ({ basePath = "" }: EmployeeNavbarProps) => {
             style={{ width: '50%' }}
           ></div>
         </div>
-
+        
         {/* Step 1 */}
         <div className="flex flex-col items-center flex-1">
           <NavLink
-            to={`${basePath}/basic-information`}
+            to="/basic-information"
             className={({ isActive }) =>
               `w-8 h-8 rounded-full border-2 flex items-center justify-center font-semibold transition-all duration-200 ${
                 isActive
@@ -38,7 +34,7 @@ const EmployeeNavbar = ({ basePath = "" }: EmployeeNavbarProps) => {
         {/* Step 2 */}
         <div className="flex flex-col items-center flex-1">
           <NavLink
-            to={`${basePath}/personal-information`}
+            to="/personal-information"
             className={({ isActive }) =>
               `w-8 h-8 rounded-full border-2 flex items-center justify-center font-semibold transition-all duration-200 ${
                 isActive

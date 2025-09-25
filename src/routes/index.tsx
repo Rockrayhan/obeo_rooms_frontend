@@ -28,15 +28,16 @@ const router = createBrowserRouter([
             path: "personal-information",
             element: <PersonalInfo />,
           },
-          {
-            path: "/employee/:id/edit-basic-information",
-            element: <EditBasicInformation />,
-          },
-          {
-            path: "/employee/:id/edit-personal-information",
-            element: <EditPersonalInfo />,
-          },
         ],
+      },
+
+      {
+        path: "/employee/:id/edit-basic-information",
+        element: <EditBasicInformation />,
+      },
+      {
+        path: "/employee/:id/edit-personal-information",
+        element: <EditPersonalInfo />,
       },
     ],
   },
