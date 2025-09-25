@@ -1,11 +1,14 @@
-import { Outlet } from "react-router";
-import EmployeeNavbar from "../Components/layout/EmployeeNavbar";
+import { Link, Outlet } from "react-router";
 
 const AddEmployee = () => {
   return (
-    <div className="p-5">
-      <EmployeeNavbar />
-      <Outlet />
+    <div>
+      <div className="bg-slate-500 text-white px-6 py-4 underline">
+        <Link to="/"> All Employee page </Link>
+      </div>
+      <div className="p-5">
+        <Outlet />
+      </div>
     </div>
   );
 };

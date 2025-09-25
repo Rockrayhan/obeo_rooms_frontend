@@ -1,6 +1,7 @@
 import BasicInformation from "@/Features/Employee/Components/BasicInformation";
 import EditBasicInformation from "@/Features/Employee/Components/EditBasicInformation";
 import EditPersonalInfo from "@/Features/Employee/Components/EditPersonalInfo";
+import CreateEmployeeLayout from "@/Features/Employee/Components/layout/CreateEmployeeLayout";
 import PersonalInfo from "@/Features/Employee/Components/PersonalInfo";
 import AddEmployee from "@/Features/Employee/pages/AddEmployee";
 import AllEmployee from "@/Features/Employee/pages/AllEmployee";
@@ -12,25 +13,30 @@ const router = createBrowserRouter([
     element: <AddEmployee />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <AllEmployee />,
       },
+      // Routes with navbar
       {
-        path: "/basic-information",
-        element: <BasicInformation />,
-      },
-      {
-        path: "personal-information",
-        element: <PersonalInfo />,
-      },
-
-      {
-        path: "/employee/:id/edit-basic-information",
-        element: <EditBasicInformation />,
-      },
-      {
-        path: "/employee/:id/edit-personal-information",
-        element: <EditPersonalInfo />,
+        element: <CreateEmployeeLayout />,
+        children: [
+          {
+            path: "/basic-information",
+            element: <BasicInformation />,
+          },
+          {
+            path: "personal-information",
+            element: <PersonalInfo />,
+          },
+          {
+            path: "/employee/:id/edit-basic-information",
+            element: <EditBasicInformation />,
+          },
+          {
+            path: "/employee/:id/edit-personal-information",
+            element: <EditPersonalInfo />,
+          },
+        ],
       },
     ],
   },
