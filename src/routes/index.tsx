@@ -4,7 +4,10 @@ import EditPersonalInfo from "@/Features/Employee/Components/EditPersonalInfo";
 import CreateEmployeeLayout from "@/Features/Employee/Components/layout/CreateEmployeeLayout";
 import PersonalInfo from "@/Features/Employee/Components/PersonalInfo";
 import AddEmployee from "@/Features/Employee/pages/AddEmployee";
+import AddEmployeePosition from "@/Features/Employee/pages/employee-position/AddEmployeePosition";
 import AllEmployee from "@/Features/Employee/pages/AllEmployee";
+import AllEmployeePosition from "@/Features/Employee/pages/employee-position/AllEmployeePosition";
+import EditEmployeePosition from "@/Features/Employee/pages/employee-position/EditEmployeePosition";
 import { createBrowserRouter } from "react-router";
 
 const router = createBrowserRouter([
@@ -38,6 +41,21 @@ const router = createBrowserRouter([
       {
         path: "/employee/:id/edit-personal-information",
         element: <EditPersonalInfo />,
+      },
+
+
+      // employee position
+      {
+        path: "/employee-position-all",
+        element: <AllEmployeePosition />,
+      },
+      {
+        path: "/employee-position-add",
+        element: <AddEmployeePosition />,
+      },
+      {
+        path: "/employee-position/:id",
+        element: <EditEmployeePosition />,
       },
     ],
   },
