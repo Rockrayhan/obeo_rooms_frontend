@@ -2,51 +2,45 @@ import { baseApi } from "@/Redux/baseApi";
 
 export const employeePositionApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // ✅ Get all positions
-    getAllPositions: builder.query({
-      query: () => "/employee-position",
-      providesTags: ["EmployeePosition"],
-    }),
-
-    // ✅ Get position by ID
-    getPositionById: builder.query({
-      query: (id: string) => `/employee-position/${id}`,
-      providesTags: (result, error, id) => [{ type: "EmployeePosition", id }],
-    }),
-
-    // ✅ Create position
+    // ✅ CREATE - Add new employee position
     createPosition: builder.mutation({
       query: (data) => ({
         url: "/employee-position",
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["EmployeePosition"], 
+      invalidatesTags: ["EmployeePosition"],
     }),
 
-    // ✅ Update position
+    // ✅ READ - Get all employee positions
+    getAllPositions: builder.query({
+      query: () => "/employee-position",
+      providesTags: ["EmployeePosition"],
+    }),
+
+    // ✅ READ - Get single position by ID
+    getPositionById: builder.query({
+      query: (id: string) => `/employee-position/${id}`,
+      providesTags: ["EmployeePosition"],
+    }),
+
+    // ✅ UPDATE - Edit employee position
     updatePosition: builder.mutation({
       query: ({ id, ...data }) => ({
         url: `/employee-position/${id}`,
         method: "PATCH",
         body: data,
       }),
-      invalidatesTags: (result, error, { id }) => [
-        { type: "EmployeePosition", id },
-        "EmployeePosition", // also refetch the list
-      ],
+      invalidatesTags: ["EmployeePosition"],
     }),
 
-    // ✅ Delete position
+    // ✅ DELETE - Remove employee position
     deletePosition: builder.mutation({
       query: (id: string) => ({
         url: `/employee-position/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: (result, error, id) => [
-        { type: "EmployeePosition", id },
-        "EmployeePosition", // also refetch the list
-      ],
+      invalidatesTags: ["EmployeePosition"],
     }),
   }),
 });

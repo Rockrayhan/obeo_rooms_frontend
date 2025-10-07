@@ -18,7 +18,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
 
-
 // ✅ Zod Schema
 const positionSchema = z.object({
   position: z.string().min(2, { message: "Position name is required" }),
@@ -36,13 +35,12 @@ const AddEmployeePosition = () => {
     },
   });
 
-
   const navigate = useNavigate();
-
 
   const onSubmit = async (values: IEmployeePositionType) => {
     try {
-      await createPosition(values).unwrap();
+      const res = await createPosition(values).unwrap();
+      console.log(res);
       form.reset();
       navigate("/employee-position-all");
       toast.success("Employee position created successfully!");

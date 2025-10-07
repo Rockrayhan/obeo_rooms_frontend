@@ -43,7 +43,7 @@ export const baseApi = createApi({
         url: `/employee/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["employee"], // refresh the employee list automatically
+      invalidatesTags: ["employee"], 
     }),
 
 

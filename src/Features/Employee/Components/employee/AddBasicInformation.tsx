@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/Redux/hooks";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { saveBasicInfo } from "../featuresSlices/employeeSlice";
+import { saveBasicInfo } from "../../featuresSlices/employeeSlice";
 import {
   Form,
   FormField,

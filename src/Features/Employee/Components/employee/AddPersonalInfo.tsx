@@ -3,7 +3,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch, useAppSelector } from "@/Redux/hooks";
 import { useNavigate } from "react-router";
-import { savePersonalInfo } from "../featuresSlices/employeeSlice";
+import { savePersonalInfo } from "../../featuresSlices/employeeSlice";
 import { useCreateEmployeeMutation } from "@/Redux/baseApi";
 
 import {

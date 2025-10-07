@@ -55,7 +55,8 @@ const EditEmployeePosition = () => {
 
   const onSubmit = async (values: IEmployeePositionType) => {
     try {
-      await updatePosition({ id, ...values }).unwrap();
+      const res =  await updatePosition({ id, ...values }).unwrap();
+      console.log(res);
       toast.success("Employee position updated successfully!");
       navigate("/employee-position-all");
     } catch (error) {

@@ -1,11 +1,11 @@
-import BasicInformation from "@/Features/Employee/Components/BasicInformation";
-import EditBasicInformation from "@/Features/Employee/Components/EditBasicInformation";
-import EditPersonalInfo from "@/Features/Employee/Components/EditPersonalInfo";
+import BasicInformation from "@/Features/Employee/Components/employee/AddBasicInformation";
+import EditBasicInformation from "@/Features/Employee/Components/employee/EditBasicInformation";
+import EditPersonalInfo from "@/Features/Employee/Components/employee/EditPersonalInfo";
 import CreateEmployeeLayout from "@/Features/Employee/Components/layout/CreateEmployeeLayout";
-import PersonalInfo from "@/Features/Employee/Components/PersonalInfo";
-import AddEmployee from "@/Features/Employee/pages/AddEmployee";
+import PersonalInfo from "@/Features/Employee/Components/employee/AddPersonalInfo";
+import AddEmployee from "@/Features/Employee/pages/employee/AddEmployee";
 import AddEmployeePosition from "@/Features/Employee/pages/employee-position/AddEmployeePosition";
-import AllEmployee from "@/Features/Employee/pages/AllEmployee";
+import AllEmployee from "@/Features/Employee/pages/employee/AllEmployee";
 import AllEmployeePosition from "@/Features/Employee/pages/employee-position/AllEmployeePosition";
 import EditEmployeePosition from "@/Features/Employee/pages/employee-position/EditEmployeePosition";
 import { createBrowserRouter } from "react-router";
