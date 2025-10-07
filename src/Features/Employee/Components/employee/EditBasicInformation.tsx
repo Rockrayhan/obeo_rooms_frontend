@@ -57,6 +57,7 @@ const EditBasicInformation = () => {
 
   const onNext = async (values: BasicInfoValues) => {
     try {
+      console.log(values);
       await updateEmployee({ id, data: { employee: values } }).unwrap();
       navigate(`/employee/${id}/edit-personal-information`);
     } catch (err) {

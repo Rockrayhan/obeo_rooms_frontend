@@ -45,6 +45,8 @@ const EditPersonalInfo = () => {
 
   const onSubmit = async (values: FormValues) => {
     try {
+      console.log(values);
+      
       await updateEmployee({ id, data: { personalInfo: values } }).unwrap();
       toast("✅ Employee updated successfully!");
       navigate("/");
