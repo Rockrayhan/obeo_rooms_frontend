@@ -19,10 +19,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import {
-  useGetEmployeeByIdQuery,
-  useUpdateEmployeeMutation,
-} from "@/Redux/baseApi";
+import { useGetEmployeeByIdQuery, useUpdateEmployeeMutation } from "../../api/employeeApi";
+// import {
+//   useGetEmployeeByIdQuery,
+//   useUpdateEmployeeMutation,
+// } from "@/Redux/baseApi";
 
 // ✅ Validation schema (reuse from BasicInformation)
 const formSchema = z.object({

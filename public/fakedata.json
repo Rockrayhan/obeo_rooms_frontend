@@ -1,0 +1,91 @@
+{
+
+
+
+  "employeePositions": [
+    {
+      "_id": "p1",
+      "position": "Manager",
+      "details": "Responsible for overseeing operations and team performance"
+    },
+    {
+      "_id": "p2",
+      "position": "Assistant",
+      "details": "Provides administrative and operational support to the manager"
+    },
+    {
+      "_id": "p3",
+      "position": "Cleaner",
+      "details": "Maintains cleanliness and organization of the workplace"
+    },
+    {
+      "_id": "p4",
+      "position": "Accountant",
+      "details": "Handles financial records and ensures compliance with accounting standards"
+    }
+  ],
+
+
+
+
+
+
+
+  "employees": [
+    {
+      "_id": "e1",
+      "firstName": "John",
+      "middleName": "Michael",
+      "lastName": "Doe",
+      "maidenName": "",
+      "email": "john@example.com",
+      "phone": "01711111111",
+      "altPhone": "",
+      "county": "Bangladesh",
+      "state": "Dhaka",
+      "city": "Mirpur",
+      "zipCode": "1207",
+      "username": "john_doe",
+      "password": "123456",
+      "fatherName": "Robert Doe",
+      "motherName": "Martha Doe",
+      "dateOfBirth": "1990-03-15",
+      "gender": "male",
+      "maritalStatus": "married",
+      "nationality": "Bangladeshi",
+      "religion": "Islam",
+      "bloodGroup": "O+",
+      "nationalIdOrPassport": "1234567890"
+    },
+    {
+      "_id": "e2",
+      "firstName": "Jane",
+      "middleName": "",
+      "lastName": "Smith",
+      "maidenName": "",
+      "email": "jane@example.com",
+      "phone": "01888888888",
+      "altPhone": "",
+      "county": "Bangladesh",
+      "state": "Chittagong",
+      "city": "Agrabad",
+      "zipCode": "4000",
+      "username": "jane_smith",
+      "password": "abcdef",
+      "fatherName": "Richard Smith",
+      "motherName": "Clara Smith",
+      "dateOfBirth": "1995-09-21",
+      "gender": "female",
+      "maritalStatus": "single",
+      "nationality": "Bangladeshi",
+      "religion": "Christianity",
+      "bloodGroup": "A+",
+      "nationalIdOrPassport": "987654321"
+    }
+  ]
+
+
+
+
+  
+}

@@ -13,8 +13,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { useGetEmployeeByIdQuery, useUpdateEmployeeMutation } from "@/Redux/baseApi";
+// import { useGetEmployeeByIdQuery, useUpdateEmployeeMutation } from "@/Redux/baseApi";
 import { toast } from "sonner";
+import { useGetEmployeeByIdQuery, useUpdateEmployeeMutation } from "../../api/employeeApi";
 
 // ✅ Reuse schema
 const formSchema = z.object({

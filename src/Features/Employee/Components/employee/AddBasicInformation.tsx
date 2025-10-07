@@ -74,7 +74,7 @@ const BasicInformation = () => {
     const currentState = store.getState(); // You might need to import store
     console.log("🔍 Redux state after save:", currentState.employee);
 
-    navigate("personal-information");
+    navigate("/personal-information");
   };
   return (
     <Form {...form}>

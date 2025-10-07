@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch, useAppSelector } from "@/Redux/hooks";
 import { useNavigate } from "react-router";
 import { savePersonalInfo } from "../../featuresSlices/employeeSlice";
-import { useCreateEmployeeMutation } from "@/Redux/baseApi";
+// import { useCreateEmployeeMutation } from "@/Redux/baseApi";
 
 import {
   Form,
@@ -23,6 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
+import { useCreateEmployeeMutation } from "../../api/employeeApi";
 
 // ✅ Zod validation schema
 const formSchema = z.object({

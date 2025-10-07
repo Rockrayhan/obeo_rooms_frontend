@@ -7,12 +7,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  useGetAllEmployeesQuery,
-  useDeleteEmployeeMutation,
-} from "@/Redux/baseApi";
+// import {
+//   useGetAllEmployeesQuery,
+//   useDeleteEmployeeMutation,
+// } from "@/Redux/baseApi";
 import { Link } from "react-router";
 import { toast } from "sonner";
+import { useDeleteEmployeeMutation, useGetAllEmployeesQuery } from "../../api/employeeApi";
 
 const AllEmployee = () => {
   const { data, isLoading, isError } = useGetAllEmployeesQuery(undefined);
