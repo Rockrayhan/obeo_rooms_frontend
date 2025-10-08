@@ -1,3 +1,4 @@
+import { createBrowserRouter } from "react-router";
 import BasicInformation from "@/Features/Employee/Components/employee/AddBasicInformation";
 import EditBasicInformation from "@/Features/Employee/Components/employee/EditBasicInformation";
 import EditPersonalInfo from "@/Features/Employee/Components/employee/EditPersonalInfo";
@@ -8,7 +9,7 @@ import AddEmployeePosition from "@/Features/Employee/pages/employee-position/Add
 import AllEmployee from "@/Features/Employee/pages/employee/AllEmployee";
 import AllEmployeePosition from "@/Features/Employee/pages/employee-position/AllEmployeePosition";
 import EditEmployeePosition from "@/Features/Employee/pages/employee-position/EditEmployeePosition";
-import { createBrowserRouter } from "react-router";
+import ManageEmployeePosition from "@/Features/Employee/pages/employee-position/ManageEmployeePosition";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/employee-position/:id",
         element: <EditEmployeePosition />,
+      },
+      {
+        path: "/manage-employee-position",
+        element: <ManageEmployeePosition/>,
       },
     ],
   },

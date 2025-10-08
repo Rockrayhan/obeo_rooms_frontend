@@ -13,18 +13,18 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router";
+import { Link } from "react-router"; 
 import { toast } from "sonner";
 
 const AllEmployeePosition = () => {
-  const { data, isLoading, isError } = useGetAllPositionsQuery({});
+  const { data , isLoading, isError } = useGetAllPositionsQuery({});
   const [deletePosition] = useDeletePositionMutation();
 
   if (isLoading) return <p>Loading positions...</p>;
   if (isError) return <p>Failed to load positions.</p>;
 
   const handleDelete = async (id: string) => {
-    if (!confirm(`Are you sure you want to delete the item ?`)) return;
+    if (!confirm(`Are you sure you want to delete this item?`)) return;
 
     try {
       await deletePosition(id).unwrap();
@@ -42,12 +42,15 @@ const AllEmployeePosition = () => {
 
         <div className="flex gap-3">
           <Link to="/employee-position-add">
-            <Button> Add Employee Position </Button>
+            <Button>
+              Add Employee Position
+            </Button>
           </Link>
 
-
-          <Link to="">
-            <Button> Manage Employee Position </Button>
+          <Link to="/manage-employee-position">
+            <Button>
+              Manage Employee Position
+            </Button>
           </Link>
         </div>
       </div>
@@ -59,35 +62,27 @@ const AllEmployeePosition = () => {
             <TableHead>SL</TableHead>
             <TableHead className="w-[200px]">Position</TableHead>
             <TableHead>Details</TableHead>
-            {/* <TableHead className="text-right w-[150px]">Actions</TableHead> */}
           </TableRow>
         </TableHeader>
-        <TableBody>
-          {data?.data?.map((pos: any) => (
-            <TableRow key={pos._id}>
-              <TableCell>{}</TableCell>
-              <TableCell className="font-medium">{pos.position}</TableCell>
-              <TableCell>{pos.details}</TableCell>
-              {/* <TableCell className="text-right flex justify-center gap-2 ">
-                <Link to={`/employee-position/${pos._id}`}>
-                  <Button
-                    variant="link"
-                    className="bg-yellow-500 text-xs text-black hover:bg-yellow-600"
-                  >
-                    Edit
-                  </Button>
-                </Link>
 
-                <Button
-                  variant="destructive"
-                  size="sm"
-                  onClick={() => handleDelete(pos._id)}
-                >
-                  Delete
-                </Button>
-              </TableCell> */}
+        <TableBody>
+          {data?.data?.length > 0 ? (
+            data?.data.map((pos: any, index: number) => (
+              <TableRow key={pos._id}>
+                {/* ✅ Serial number */}
+                <TableCell>{index + 1}</TableCell>
+
+                <TableCell className="font-medium">{pos.position}</TableCell>
+                <TableCell>{pos.details}</TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={3} className="text-center py-4">
+                No positions found.
+              </TableCell>
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
     </div>
