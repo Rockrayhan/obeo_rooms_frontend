@@ -5,7 +5,7 @@ const AddEmployee = () => {
   return (
     <div>
       <Navbar />
-      <div className="p-5">
+      <div className="">
         <Outlet />
       </div>
     </div>

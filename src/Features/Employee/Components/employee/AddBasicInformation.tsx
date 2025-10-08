@@ -83,7 +83,7 @@ const BasicInformation = () => {
         className="p-8 w-full h-full mx-auto"
       >
         <div className="border-2 border-gray-300 p-3 space-y-6">
-          <h2 className="text-xl font-semibold">Basic Information</h2>
+          {/* <h2 className="text-xl font-semibold"> Basic Information </h2> */}
 
           {/* name fiels */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
@@ -271,6 +271,11 @@ const BasicInformation = () => {
               )}
             />
           </div>
+
+
+              <h6 className="font-semibold text-2xl">
+                Log In
+              </h6>
 
           {/* login */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">

@@ -34,8 +34,8 @@ const AllEmployee = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col gap-3 mb-2">
+    <div className="space-y-6 p-8">
+      <div className="flex justify-between">
         <h1 className="text-2xl font-bold">All Employees</h1>
         <Link to="/basic-information">
           <Button>Add Employee</Button>

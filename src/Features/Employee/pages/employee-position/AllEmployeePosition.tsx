@@ -37,29 +37,38 @@ const AllEmployeePosition = () => {
 
   return (
     <div className="p-5">
-      <div className="flex flex-col gap-3 mb-2">
+      <div className="flex justify-between mb-4">
         <h1 className="text-xl font-bold">All Employee Positions</h1>
 
-        <Link to="/employee-position-add">
-          <Button> Add Employee Position </Button>
-        </Link>
+        <div className="flex gap-3">
+          <Link to="/employee-position-add">
+            <Button> Add Employee Position </Button>
+          </Link>
+
+
+          <Link to="">
+            <Button> Manage Employee Position </Button>
+          </Link>
+        </div>
       </div>
 
       <Table className="border rounded-lg shadow-sm">
         <TableCaption>A list of all employee positions.</TableCaption>
         <TableHeader>
           <TableRow>
+            <TableHead>SL</TableHead>
             <TableHead className="w-[200px]">Position</TableHead>
             <TableHead>Details</TableHead>
-            <TableHead className="text-right w-[150px]">Actions</TableHead>
+            {/* <TableHead className="text-right w-[150px]">Actions</TableHead> */}
           </TableRow>
         </TableHeader>
         <TableBody>
           {data?.data?.map((pos: any) => (
             <TableRow key={pos._id}>
+              <TableCell>{}</TableCell>
               <TableCell className="font-medium">{pos.position}</TableCell>
               <TableCell>{pos.details}</TableCell>
-              <TableCell className="text-right flex justify-center gap-2 ">
+              {/* <TableCell className="text-right flex justify-center gap-2 ">
                 <Link to={`/employee-position/${pos._id}`}>
                   <Button
                     variant="link"
@@ -76,7 +85,7 @@ const AllEmployeePosition = () => {
                 >
                   Delete
                 </Button>
-              </TableCell>
+              </TableCell> */}
             </TableRow>
           ))}
         </TableBody>
