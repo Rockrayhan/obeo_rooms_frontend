@@ -10,6 +10,7 @@ import AllEmployee from "@/Features/Employee/pages/employee/AllEmployee";
 import AllEmployeePosition from "@/Features/Employee/pages/employee-position/AllEmployeePosition";
 import EditEmployeePosition from "@/Features/Employee/pages/employee-position/EditEmployeePosition";
 import ManageEmployeePosition from "@/Features/Employee/pages/employee-position/ManageEmployeePosition";
+import ManageEmployee from "@/Features/Employee/pages/employee/ManageEmployee";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/employee/:id/edit-personal-information",
         element: <EditPersonalInfo />,
+      },
+      {
+        path: "/manage-employee",
+        element: <ManageEmployee />,
       },
 
 

@@ -1,19 +1,10 @@
 import { Button } from "@/components/ui/button";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-// import {
-//   useGetAllEmployeesQuery,
-//   useDeleteEmployeeMutation,
-// } from "@/Redux/baseApi";
 import { Link } from "react-router";
 import { toast } from "sonner";
 import { useDeleteEmployeeMutation, useGetAllEmployeesQuery } from "../../api/employeeApi";
+import { DataTable } from "@/lib/DataTable";
+import {  EmployeeColumns } from "../../Components/employee/EmployeeColumns";
+
 
 const AllEmployee = () => {
   const { data, isLoading, isError } = useGetAllEmployeesQuery(undefined);
@@ -34,62 +25,27 @@ const AllEmployee = () => {
   };
 
   return (
-    <div className="space-y-6 p-8">
+    <div className="p-6 space-y-6">
       <div className="flex justify-between">
         <h1 className="text-2xl font-bold">All Employees</h1>
+
+        <div className="flex gap-2">
         <Link to="/basic-information">
           <Button>Add Employee</Button>
         </Link>
+
+        <Link to="/manage-employee">
+          <Button>Manage Employee</Button>
+        </Link>
+        </div>
+
       </div>
 
-      <div className="border rounded-lg shadow-sm">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>First Name</TableHead>
-              <TableHead>Last Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Phone</TableHead>
-              <TableHead className="text-center">Action</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {data?.data?.length ? (
-              data.data.map((emp: any) => (
-                <TableRow key={emp._id}>
-                  <TableCell>{emp.firstName}</TableCell>
-                  <TableCell>{emp.lastName}</TableCell>
-                  <TableCell>{emp.email}</TableCell>
-                  <TableCell>{emp.phone}</TableCell>
-                  <TableCell className="text-center">
-                    <div className="flex gap-2 justify-center">
-                      <Link to={`/employee/${emp._id}/edit-basic-information`}>
-                        <Button className="bg-yellow-500">Edit</Button>
-                      </Link>
-                      <Button
-                        variant="destructive"
-                        size="sm"
-                        className="text-xs"
-                        onClick={() => handleDelete(emp._id)}
-                      >
-                        Delete
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={5}
-                  className="text-center py-6 text-gray-500"
-                >
-                  No employees found.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+      <div className="border rounded-lg shadow-sm bg-white p-4">
+        <DataTable
+          columns={EmployeeColumns(handleDelete)}
+          data={data?.data || []}
+        />
       </div>
     </div>
   );
