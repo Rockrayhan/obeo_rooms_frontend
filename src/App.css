@@ -3,16 +3,6 @@
   --normal-bg: var(--popover);
   --normal-text: var(--popover-foreground);
   --normal-border: var(--border);
-
-  /* success variant */
-  --success-bg: rgb(22 163 74);   /* green-600 */
-  --success-text: white;
-  --success-border: rgb(21 128 61); /* green-700 */
-
-  /* error variant */
-  --error-bg: rgb(220 38 38);     /* red-600 */
-  --error-text: white;
-  --error-border: rgb(185 28 28); /* red-700 */
 }
 
 
@@ -25,3 +15,17 @@ button {
   color: white;
 
 }
+
+
+
+/* form */
+
+.form-item {
+  @apply flex flex-col justify-between h-[80px];
+}
+
+.form-item label {
+  margin-bottom: 10px
+}
+
+

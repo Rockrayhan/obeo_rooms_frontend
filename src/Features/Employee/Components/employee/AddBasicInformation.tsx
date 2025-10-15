@@ -82,7 +82,7 @@ const BasicInformation = () => {
         onSubmit={form.handleSubmit(onNext)}
         className="p-8 w-full h-full mx-auto"
       >
-        <div className="border-2 border-gray-300 p-3 space-y-6">
+        <div className="border-2 border-gray-300 p-3 space-y-5">
           {/* <h2 className="text-xl font-semibold"> Basic Information </h2> */}
 
           {/* name fiels */}
@@ -92,11 +92,13 @@ const BasicInformation = () => {
               control={form.control}
               name="firstName"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>First Name *</FormLabel>
-                  <FormControl>
-                    <Input placeholder="John" {...field} />
-                  </FormControl>
+                <FormItem className="form-item">
+                  <div>
+                    <FormLabel>First Name *</FormLabel>
+                    <FormControl>
+                      <Input placeholder="John" {...field} />
+                    </FormControl>
+                  </div>
                   <FormMessage />
                 </FormItem>
               )}
@@ -107,12 +109,14 @@ const BasicInformation = () => {
               control={form.control}
               name="middleName"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>Middle Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Michael" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />
@@ -122,12 +126,14 @@ const BasicInformation = () => {
               control={form.control}
               name="lastName"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>Last Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Doe" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />
@@ -137,12 +143,14 @@ const BasicInformation = () => {
               control={form.control}
               name="maidenName"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>Maiden Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Optional" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />
@@ -155,16 +163,18 @@ const BasicInformation = () => {
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>Email *</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
                       placeholder="email@example.com"
                       {...field}
-                    />
+                      />
                   </FormControl>
-                  <FormMessage />
+                      </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />
@@ -174,12 +184,14 @@ const BasicInformation = () => {
               control={form.control}
               name="phone"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>Phone *</FormLabel>
                   <FormControl>
                     <Input type="tel" placeholder="123-456-7890" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />
@@ -189,12 +201,14 @@ const BasicInformation = () => {
               control={form.control}
               name="altPhone"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>Alternative Phone</FormLabel>
                   <FormControl>
                     <Input type="tel" placeholder="Optional" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />
@@ -207,7 +221,8 @@ const BasicInformation = () => {
               control={form.control}
               name="county"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>County</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl className="w-full">
@@ -221,7 +236,8 @@ const BasicInformation = () => {
                       <SelectItem value="Malyesia">Malyesia </SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormMessage />
+                    </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />
@@ -231,12 +247,14 @@ const BasicInformation = () => {
               control={form.control}
               name="state"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>State</FormLabel>
                   <FormControl>
                     <Input placeholder="Dhaka" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />
@@ -246,12 +264,14 @@ const BasicInformation = () => {
               control={form.control}
               name="city"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>City</FormLabel>
                   <FormControl>
                     <Input placeholder="Mirpur" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />
@@ -261,21 +281,20 @@ const BasicInformation = () => {
               control={form.control}
               name="zipCode"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>Zip Code</FormLabel>
                   <FormControl>
                     <Input placeholder="1207" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />
           </div>
 
-
-              <h6 className="font-semibold text-2xl">
-                Log In
-              </h6>
+          <h6 className="font-semibold text-2xl">Log In</h6>
 
           {/* login */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -284,12 +303,14 @@ const BasicInformation = () => {
               control={form.control}
               name="username"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>Username</FormLabel>
                   <FormControl>
                     <Input placeholder="johndoe" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />
@@ -299,12 +320,14 @@ const BasicInformation = () => {
               control={form.control}
               name="password"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="form-item">
+                  <div>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input type="password" placeholder="********" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  </div>
+                  <FormMessage className="form-message" />
                 </FormItem>
               )}
             />

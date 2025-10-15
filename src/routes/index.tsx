@@ -1,7 +1,5 @@
 import { createBrowserRouter } from "react-router";
 import BasicInformation from "@/Features/Employee/Components/employee/AddBasicInformation";
-import EditBasicInformation from "@/Features/Employee/Components/employee/EditBasicInformation";
-import EditPersonalInfo from "@/Features/Employee/Components/employee/EditPersonalInfo";
 import CreateEmployeeLayout from "@/Features/Employee/Components/layout/CreateEmployeeLayout";
 import PersonalInfo from "@/Features/Employee/Components/employee/AddPersonalInfo";
 import AddEmployee from "@/Features/Employee/pages/employee/AddEmployee";
@@ -36,14 +34,6 @@ const router = createBrowserRouter([
         ],
       },
 
-      {
-        path: "/employee/:id/edit-basic-information",
-        element: <EditBasicInformation />,
-      },
-      {
-        path: "/employee/:id/edit-personal-information",
-        element: <EditPersonalInfo />,
-      },
       {
         path: "/manage-employee",
         element: <ManageEmployee />,
